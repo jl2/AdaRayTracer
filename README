@@ -1,0 +1,11 @@
+This is a ray tracer I wrote in Ada for a school project.
+
+The first part of the project was to implement the traditional ray tracing algorithm.
+
+The second part of the project was to speed it up using grid traversal.
+
+In the normal ray tracing algorithm a ray is traced through the scene from the eye point through each pixel of the resulting image.  Every object in the scene is checked for intersection.  Even when an intersection is found, the remaining objects must be checked, in case one of them is closer.  When an intersection is found, multiple new rays are sent out and those rays also do intersection testing against every object in the scene.
+
+The grid traversal implemented here divides the scene up into a 3D grid where each grid cell has pointers to the objects contained in it.  When a ray is traced through the scene it traverses through the grid using a fast 3D version of Bresenham's line drawing algorithm.  Instead of testing for intersection against all objects in the scene, only the objects in a few grid cells need to be tested.
+
+The speed up achieved depends on the size of the grid and the placement of the objects in the scene, but can be significant.
